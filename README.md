@@ -52,9 +52,14 @@ Make sure to have installed:
 - `tomlq`
 - `python3` aliased as `python` (highly recommend using a virtual environment)
 - python dependencies: `pip install -r requirements.txt`
+- Dependencies needed to build OpenWrt: https://openwrt.org/docs/guide-developer/toolchain/install-buildsystem
 
 ## Repo tools
-- Configure build system `make configure`
+- Clone the OpenWrt repository `make clone-openwrt`
+- Configure build system with wayru-os profiels `make configure`
+  - Make sure to have specified the profile in the `.env` file
+- Complete the configuration with the OpenWrt build system `make menuconfig`
+- Build the firmware `make build`
 - Upload builds `make upload`
 
 ## Upload builds
