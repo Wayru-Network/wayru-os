@@ -1,10 +1,17 @@
-.PHONY: configure-build upload-build
+.PHONY: clone-openwrt configure feeds defconfig upload-build clean-openwrt
 
 clone-openwrt:
 	./tools/clone-openwrt.sh
 
 configure:
 	python tools/configure.py
+
+feeds:
+	cd openwrt && ./scripts/feeds update -a
+	cd openwrt && ./scripts/feeds install -a
+
+defconfig:
+	cd openwrt && make defconfig
 
 upload-build:
 	python tools/upload-build.py

@@ -41,7 +41,7 @@ def generate_build_config(base_config, firmware_config):
         base_packages = firmware_config["packages"]["base"]
         for package in base_packages:
             if package == "dnsmasq-full":
-                build_config_file.write('CONFIG_PACKAGE_dnsmasq is not set\n')
+                build_config_file.write('# CONFIG_PACKAGE_dnsmasq is not set\n')
 
             build_config_file.write(f'CONFIG_PACKAGE_{package}=y\n')
 
@@ -120,6 +120,9 @@ def main():
 
     # Copy banner
     shutil.copy2(os.path.join(TMP_PATH, BANNER_FILE), f'openwrt/files/etc/banner')
+
+    # Copy diffconfig
+    shutil.copy2(os.path.join(TMP_PATH, DIFFCONFIG_FILE), 'openwrt/.config')
 
 
 if __name__ == '__main__':
