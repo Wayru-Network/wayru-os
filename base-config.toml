@@ -9,7 +9,7 @@ tag = "v23.05.4"
 [[openwrt.feeds]]
 method = "src-git"
 name = "wayru_os_feed"
-url = "https://github.com/Wayru-Network/wayru-os-feed.git"
+url = "https://github.com/Wayru-Network/wayru-os-feed.git;develop"
 
 [[openwrt.feeds]]
 method = "src-git"
