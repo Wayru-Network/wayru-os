@@ -21,6 +21,7 @@ base = [
     "libubus-lua",
     # Enterprise networks
     "wpad",
+    "radsecproxy",
     # OpenWISP
     "openwisp-config",
     "openwisp-monitoring",

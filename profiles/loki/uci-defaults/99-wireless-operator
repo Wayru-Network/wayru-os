@@ -1,9 +1,8 @@
 uci -q batch << EOI
 
 set wireless.@wifi-device[0].disabled='0'
-set wireless.@wifi-device[0].htmode='HT20'
+set wireless.@wifi-device[0].htmode='HT40'
 set wireless.@wifi-device[0].channel='auto'
-set wireless.@wifi-device[0].txpower='30'
 set wireless.@wifi-device[0].cell_density='0'
 
 set wireless.@wifi-iface[0].disabled='0'
@@ -14,9 +13,8 @@ set wireless.@wifi-iface[0].network='encrypted'
 set wireless.@wifi-iface[0].isolate='1'
 
 set wireless.@wifi-device[1].disabled='0'
-set wireless.@wifi-device[1].htmode='VHT20'
+set wireless.@wifi-device[1].htmode='VHT80'
 set wireless.@wifi-device[1].channel='auto'
-set wireless.@wifi-device[1].txpower='23'
 set wireless.@wifi-device[1].cell_density='0'
 
 set wireless.@wifi-iface[1].disabled='0'

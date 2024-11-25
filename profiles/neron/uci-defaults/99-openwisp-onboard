@@ -8,6 +8,6 @@ set openwisp.http.url="https://controller.wayru.net"
 set openwisp.http.shared_secret="yvHGMsfHVScJcVAYtcm07oG2TKz2l1HH"
 set openwisp.http.verify_ssl="1"
 set openwisp.http.management_interface="tun0"
-set openwisp.http.tags="wayru-services v23"
+set openwisp.http.tags="wayru-services v23 radsec passpoint"
 commit openwisp
 EOI
