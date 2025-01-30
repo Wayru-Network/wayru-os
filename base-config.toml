@@ -1,6 +1,6 @@
 [general]
 os_name = "wayru-os"
-os_version = "23.2.3"
+os_version = "23.3.0"
 
 [openwrt]
 repo = "https://git.openwrt.org/openwrt/openwrt.git"
@@ -9,7 +9,7 @@ tag = "v23.05.4"
 [[openwrt.feeds]]
 method = "src-git"
 name = "wayru_os_feed"
-url = "https://github.com/Wayru-Network/wayru-os-feed.git;develop"
+url = "https://github.com/Wayru-Network/wayru-os-feed.git"
 
 [[openwrt.feeds]]
 method = "src-git"

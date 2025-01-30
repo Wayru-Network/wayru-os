@@ -20,13 +20,15 @@ configure:
 	python $(TOOLS_DIR)/configure.py
 
 defconfig:
-	cd $(OPENWRT_DIR) && $(MAKE) defconfig
+	exec $(MAKE) -C $(OPENWRT_DIR) defconfig
 
 build:
-	cd $(OPENWRT_DIR) && $(MAKE) -j$(nproc) download clean world
+	exec $(MAKE) -C $(OPENWRT_DIR) -j$(nproc) download
+	exec $(MAKE) -C $(OPENWRT_DIR) -j$(nproc) clean
+	exec $(MAKE) -C $(OPENWRT_DIR) -j$(nproc) world
 
 build-debug:
-	cd $(OPENWRT_DIR) && $(MAKE) -j1 V=s
+	exec $(MAKE) -C $(OPENWRT_DIR) -j1 V=s
 
 upload-build:
 	python $(TOOLS_DIR)/upload-build.py
