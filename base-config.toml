@@ -1,6 +1,6 @@
 [general]
 os_name = "wayru-os"
-os_version = "23.3.0"
+os_version = "23.3.1"
 
 [openwrt]
 repo = "https://git.openwrt.org/openwrt/openwrt.git"

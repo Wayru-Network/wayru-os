@@ -23,9 +23,7 @@ defconfig:
 	exec $(MAKE) -C $(OPENWRT_DIR) defconfig
 
 build:
-	exec $(MAKE) -C $(OPENWRT_DIR) -j$(nproc) download
-	exec $(MAKE) -C $(OPENWRT_DIR) -j$(nproc) clean
-	exec $(MAKE) -C $(OPENWRT_DIR) -j$(nproc) world
+	exec $(MAKE) -C $(OPENWRT_DIR) -j$(nproc) download clean world
 
 build-debug:
 	exec $(MAKE) -C $(OPENWRT_DIR) -j1 V=s
