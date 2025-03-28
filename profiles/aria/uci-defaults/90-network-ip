@@ -5,14 +5,18 @@ uci -q batch << EOI
 add network bridge-vlan
 set network.@bridge-vlan[-1].device='br-lan'
 set network.@bridge-vlan[-1].vlan='10'
-add_list network.@bridge-vlan[-1].ports='lan1'
-add_list network.@bridge-vlan[-1].ports='lan2'
-add_list network.@bridge-vlan[-1].ports='lan3'
-add_list network.@bridge-vlan[-1].ports='lan4'
 
 add network bridge-vlan
 set network.@bridge-vlan[-1].device='br-lan'
 set network.@bridge-vlan[-1].vlan='20'
+
+add network bridge-vlan
+set network.@bridge-vlan[-1].device='br-lan'
+set network.@bridge-vlan[-1].vlan='30'
+add_list network.@bridge-vlan[-1].ports='lan1'
+add_list network.@bridge-vlan[-1].ports='lan2'
+add_list network.@bridge-vlan[-1].ports='lan3'
+add_list network.@bridge-vlan[-1].ports='lan4'
 
 # Network for each VLAN
 set network.captive=interface
@@ -26,6 +30,12 @@ set network.encrypted.proto='static'
 set network.encrypted.ipaddr='192.168.45.1'
 set network.encrypted.netmask='255.255.255.0'
 set network.encrypted.device='br-lan.20'
+
+set network.ports=interface
+set network.ports.proto='static'
+set network.ports.ipaddr='192.168.65.1'
+set network.ports.netmask='255.255.255.0'
+set network.ports.device='br-lan.30'
 
 del network.lan
 

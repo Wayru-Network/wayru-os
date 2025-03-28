@@ -11,14 +11,22 @@ set network.@device[-1].name='br-lan'
 set network.@device[-1].type='bridge'
 set network.@device[-1].ports='eth0.2'
 
+add network device
+set network.@device[-1].name='br-lan'
+set network.@device[-1].type='bridge'
+set network.@device[-1].ports='eth0.2'
+
 add network bridge-vlan
 set network.@bridge-vlan[-1].device='br-lan'
 set network.@bridge-vlan[-1].vlan='10'
-set network.@bridge-vlan[-1].ports='eth0.2:t'
 
 add network bridge-vlan
 set network.@bridge-vlan[-1].device='br-lan'
 set network.@bridge-vlan[-1].vlan='20'
+
+add network bridge-vlan
+set network.@bridge-vlan[-1].device='br-lan'
+set network.@bridge-vlan[-1].vlan='30'
 set network.@bridge-vlan[-1].ports='eth0.2'
 
 # Network for each VLAN
@@ -33,6 +41,12 @@ set network.encrypted.proto='static'
 set network.encrypted.ipaddr='192.168.45.1'
 set network.encrypted.netmask='255.255.255.0'
 set network.encrypted.device='br-lan.20'
+
+set network.ports=interface
+set network.ports.proto='static'
+set network.ports.ipaddr='192.168.65.1'
+set network.ports.netmask='255.255.255.0'
+set network.ports.device='br-lan.30'
 
 del network.lan
 

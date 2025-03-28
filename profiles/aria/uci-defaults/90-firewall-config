@@ -7,7 +7,6 @@ set firewall.@zone[-1].output='ACCEPT'
 set firewall.@zone[-1].forward='ACCEPT'
 add_list firewall.@zone[-1].network='captive'
 
-
 add firewall zone
 set firewall.@zone[-1].name='encrypted'
 set firewall.@zone[-1].input='ACCEPT'
@@ -15,6 +14,12 @@ set firewall.@zone[-1].output='ACCEPT'
 set firewall.@zone[-1].forward='ACCEPT'
 add_list firewall.@zone[-1].network='encrypted'
 
+add firewall zone
+set firewall.@zone[-1].name='ports'
+set firewall.@zone[-1].network='ports'
+set firewall.@zone[-1].input='ACCEPT'
+set firewall.@zone[-1].output='ACCEPT'
+set firewall.@zone[-1].forward='ACCEPT'
 
 add firewall forwarding
 set firewall.@forwarding[-1].src='captive'
@@ -22,6 +27,10 @@ set firewall.@forwarding[-1].dest='wan'
 
 add firewall forwarding
 set firewall.@forwarding[-1].src='encrypted'
+set firewall.@forwarding[-1].dest='wan'
+
+add firewall forwarding
+set firewall.@forwarding[-1].src='ports'
 set firewall.@forwarding[-1].dest='wan'
 
 del firewall.cfg02dc81

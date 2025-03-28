@@ -14,6 +14,13 @@ set dhcp.encrypted.limit='150'
 set dhcp.encrypted.leasetime='12h'
 set dhcp.encrypted.force='1'
 
+set dhcp.ports=dhcp
+set dhcp.ports.interface='ports'
+set dhcp.ports.start='100'
+set dhcp.ports.limit='150'
+set dhcp.ports.leasetime='12h'
+set dhcp.ports.force='1'
+
 commit dhcp
 
 EOI
