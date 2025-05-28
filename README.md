@@ -46,9 +46,9 @@ Format: `wayru-os-{device-codename}-{major}.{minor}.{patch}`
 Example: `wayru-os-genesis-23.1.0`
 
 ## Repo setup
-Make sure to have installed:
-- `just` - A modern command runner (https://github.com/casey/just)
-- `uv` - Fast Python package installer and resolver (https://docs.astral.sh/uv/)
+Make sure to install:
+- `just`
+- `uv`
 - `git`
 - Dependencies needed to build OpenWrt: https://openwrt.org/docs/guide-developer/toolchain/install-buildsystem
 
