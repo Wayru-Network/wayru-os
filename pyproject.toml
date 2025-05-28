@@ -1,0 +1,29 @@
+[project]
+name = "wayru-os"
+version = "0.1.0"
+description = "wayru-os build system and configuration"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "argcomplete>=3.6.2",
+    "azure-core>=1.34.0",
+    "azure-storage-blob>=12.25.1",
+    "certifi>=2025.4.26",
+    "cffi>=1.17.1",
+    "charset-normalizer>=3.4.2",
+    "cryptography>=45.0.3",
+    "idna>=3.10",
+    "isodate>=0.7.2",
+    "pycparser>=2.22",
+    "python-dotenv>=1.1.0",
+    "pyyaml>=6.0.2",
+    "requests>=2.32.3",
+    "six>=1.17.0",
+    "toml>=0.10.2",
+    "tomlkit>=0.13.2",
+    "tomlq>=0.1.0",
+    "typing-extensions>=4.13.2",
+    "urllib3>=2.4.0",
+    "xmltodict>=0.14.2",
+    "yq>=3.4.3",
+]

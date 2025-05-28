@@ -47,27 +47,31 @@ Example: `wayru-os-genesis-23.1.0`
 
 ## Repo setup
 Make sure to have installed:
-- `make`
+- `just` - A modern command runner (https://github.com/casey/just)
+- `uv` - Fast Python package installer and resolver (https://docs.astral.sh/uv/)
 - `git`
-- `python3` aliased as `python` (highly recommend using a virtual environment)
-  - example: `python3 -m venv .venv`
-  - activate the virtual environment: `source .venv/bin/activate`
-  - confirm `python --version` works and that the alias is set up correctly
-- python dependencies: `pip install -r requirements.txt`
 - Dependencies needed to build OpenWrt: https://openwrt.org/docs/guide-developer/toolchain/install-buildsystem
+
+### Quick setup:
+1. Install `just`: `cargo install just` or use your package manager
+2. Install `uv`: `curl -LsSf https://astral.sh/uv/install.sh | sh` or `pip install uv`
+3. Set up the Python environment: `just setup`
 
 ## Repo tools
 The repo has tools to configure, build, and publish wayru-os images.
 
-Check the `Makefile` and the `tools` folder for a better understanding of the tools available.
+Check the `justfile` and the `tools` folder for a better understanding of the tools available.
 
+You can also run `just` to show all available recipes.
+
+### Quick start:
 To set up and build a wayru-os image, you can follow these steps:
-- Clone the OpenWrt repository `make clone-openwrt`
-- Add patches if the device need them `make add-patches`
-- Update and install feeds `make update-feeds`
-- Configure build system with wayru-os profiles `make configure`
-  - Make sure to have specified the profile in the `.env` file
-- Update and install feeds again so that Wayru packages are available
-- Complete the configuration with the OpenWrt build system `make defconfig`
-- Build the firmware `make build`
-- Upload builds `make upload`
+1. Set up the environment: `just setup`
+2. Configure your profile in the `.env` file (copy from `.env.example`)
+3. Run the complete build: `just full-build`
+
+### Development workflow:
+For iterative development after initial setup:
+- Make changes to configuration
+- Run: `just dev-build`
+- Upload when ready: `just upload-build`
