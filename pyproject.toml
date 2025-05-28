@@ -22,6 +22,7 @@ dependencies = [
     "toml>=0.10.2",
     "tomlkit>=0.13.2",
     "tomlq>=0.1.0",
+    "tqdm>=4.66.4",
     "typing-extensions>=4.13.2",
     "urllib3>=2.4.0",
     "xmltodict>=0.14.2",

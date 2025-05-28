@@ -18,7 +18,7 @@ setup:
 
 # Clone OpenWrt repository
 clone-openwrt:
-    {{tools_dir}}/clone-openwrt.sh
+    uv run python {{tools_dir}}/clone-openwrt.py
 
 # Update and install OpenWrt feeds
 update-feeds:
