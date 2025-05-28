@@ -67,11 +67,11 @@ def main():
     print(f"Repository: {repo}")
     print(f"Tag: {tag}")
 
-    # Clone with progress monitoring (shallow clone for faster download)
+    # Clone with progress monitoring
     print(f"Cloning OpenWrt repository (tag: {tag})...")
     try:
         process = subprocess.Popen(
-            ["git", "clone", "--depth", "1", "--branch", tag, repo, "openwrt"],
+            ["git", "clone", "--branch", tag, repo, "openwrt"],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL
         )
