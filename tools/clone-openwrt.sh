@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Load config
-repo=$(tomlq '.openwrt.repo' base-config.toml | tr -d '"')
-tag=$(tomlq '.openwrt.tag' base-config.toml | tr -d '"')
+repo=$(uv run tomlq '.openwrt.repo' base-config.toml | tr -d '"')
+tag=$(uv run tomlq '.openwrt.tag' base-config.toml | tr -d '"')
 
 # Clone and checkout tag
 git clone $repo openwrt
