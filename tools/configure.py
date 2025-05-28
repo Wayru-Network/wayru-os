@@ -104,8 +104,8 @@ def main():
 
     # @todo Fetch shadow file from secrets vault
 
-    os_name = base_config['general']['os_name'] 
-    
+    os_name = base_config['general']['os_name']
+
     # Create needed directories to ship files with the build
     os_name = base_config['general']['os_name']
     os.makedirs('openwrt/files/etc/uci-defaults', exist_ok=True)
@@ -127,21 +127,6 @@ def main():
 
     # Copy diffconfig
     shutil.copy2(os.path.join(TMP_PATH, DIFFCONFIG_FILE), 'openwrt/.config')
-
-    # Set up feeds
-    default_feeds_content = ''
-    with open('openwrt/feeds.conf.default', 'r') as default_feeds_file:
-        default_feeds_content = default_feeds_file.read()
-
-    feeds = base_config['openwrt']['feeds']
-    feeds_content = ''
-    for feed in feeds:
-        feeds_content += f'{feed["method"]} {feed["name"]} {feed["url"]}\n'
-
-    with open('openwrt/feeds.conf', 'w') as feeds_file:
-        feeds_file.write(feeds_content)
-        feeds_file.write('\n')
-        feeds_file.write(default_feeds_content)
 
 if __name__ == '__main__':
     main()
