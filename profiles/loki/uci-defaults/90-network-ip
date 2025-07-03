@@ -1,48 +1,42 @@
-# Delete the original device record (br-lan bridge)
-uci delete network.@device[0]
+uci -q batch << EOI
 
-# Delete the original lan interface (lan interface)
-uci delete network.lan
+# VLAN
 
-# Configure WAN interface
-uci set network.wan=interface
-uci set network.wan.proto=dhcp
-uci set network.wan.device='sw-eth1'
+add network bridge-vlan
+set network.@bridge-vlan[-1].device='br-lan'
+set network.@bridge-vlan[-1].vlan='10'
+add_list network.@bridge-vlan[-1].ports='sw-eth1'
 
-# Create a new device and configure it as a bridge
-uci set network.wayru_bridge=device
-uci set network.wayru_bridge.name='wayru-bridge'
-uci set network.wayru_bridge.type='bridge'
-uci add_list network.wayru_bridge.ports='sw-eth2'
+add network bridge-vlan
+set network.@bridge-vlan[-1].device='br-lan'
+set network.@bridge-vlan[-1].vlan='20'
 
-# Configure VLANs on the bridge
-uci set network.vlan1=bridge-vlan
-uci set network.vlan1.device='wayru-bridge'
-uci set network.vlan1.vlan='1'
-uci add_list network.vlan1.ports='sw-eth2:t'
+add network bridge-vlan
+set network.@bridge-vlan[-1].device='br-lan'
+set network.@bridge-vlan[-1].vlan='30'
+add_list network.@bridge-vlan[-1].ports='sw-eth2'
 
-uci set network.vlan20=bridge-vlan
-uci set network.vlan20.device='wayru-bridge'
-uci set network.vlan20.vlan='20'
-uci add_list network.vlan20.ports='sw-eth2'
+# Network for each VLAN
+set network.captive=interface
+set network.captive.proto='static'
+set network.captive.ipaddr='192.168.55.1'
+set network.captive.netmask='255.255.255.0'
+set network.captive.device='br-lan.10'
 
-# Configure the captive interface
-uci set network.captive=interface
-uci set network.captive.proto='static'
-uci set network.captive.ipaddr='192.168.55.1'
-uci set network.captive.netmask='255.255.255.0'
-uci set network.captive.device='wayru-bridge.1'
-uci set network.captive.ip6assign='60'
+set network.encrypted=interface
+set network.encrypted.proto='static'
+set network.encrypted.ipaddr='192.168.45.1'
+set network.encrypted.netmask='255.255.255.0'
+set network.encrypted.device='br-lan.20'
 
-# Configure the encrypted interface
-uci set network.encrypted=interface
-uci set network.encrypted.proto='static'
-uci set network.encrypted.ipaddr='192.168.45.1'
-uci set network.encrypted.netmask='255.255.255.0'
-uci set network.encrypted.device='wayru-bridge.20'
-uci set network.encrypted.ip6assign='60'
+set network.ports=interface
+set network.ports.proto='static'
+set network.ports.ipaddr='192.168.65.1'
+set network.ports.netmask='255.255.255.0'
+set network.ports.device='br-lan.30'
 
 del network.lan
 
-# Commit changes and delete the script to avoid re-execution
-uci commit network
+commit network
+
+EOI
